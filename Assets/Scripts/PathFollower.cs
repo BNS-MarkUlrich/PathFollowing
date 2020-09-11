@@ -14,7 +14,6 @@ namespace Opdrachten
     {
         public Transform target;
         public float speed = 1.0f;
-        //public Waypoint position;
 
         void Update()
         {
