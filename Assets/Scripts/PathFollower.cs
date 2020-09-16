@@ -19,13 +19,16 @@ namespace Opdrachten
         [SerializeField] private float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;
 
-        public void Start()
-        {
-            Debug.Log("I return from NextWayPointLocation: " + gameObject.GetComponent<Path>().GetNextWaypoint());
+
+        private void Start()
+        {            
+            //Debug.Log("I return from NextWayPointLocation: " + gameObject.GetComponent<PathFollower>().NextWayPointLocation());
+            gameObject.GetComponent<Path>()._currentWaypointIndex = 0;
         }
 
-        public Waypoint NextWayPointLocation()
+        public Waypoint NextWayPointLocation() // This needs to somehow be implemented
         {
+            //Debug.Log("I return from NextWayPointLocation: " + gameObject.GetComponent<Path>().GetNextWaypoint());
             return gameObject.GetComponent<Path>().GetNextWaypoint();
         }
 
@@ -34,16 +37,39 @@ namespace Opdrachten
         /// </summary>
         private void Update()
         {
-
-            Vector3 heightOffsetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Vector3 heightOffsetPosition = new Vector3(gameObject.GetComponent<Path>()._waypoints[gameObject.GetComponent<Path>()._currentWaypointIndex].position.x, 
+                transform.position.y, gameObject.GetComponent<Path>()._waypoints[gameObject.GetComponent<Path>()._currentWaypointIndex].position.z); // gameObject.GetComponent<PathFollower>().NextWayPointLocation();
             float distance = Vector3.Distance(transform.position, heightOffsetPosition);
 
+            //Debug.Log(gameObject.GetComponent<Path>()._waypoints[gameObject.GetComponent<Path>()._currentWaypointIndex]);
+
             if (distance <= _arrivalthreshold)
+            {
+                if (gameObject.GetComponent<Path>()._currentWaypointIndex == gameObject.GetComponent<Path>()._waypoints.Length-1)
+                {
+                    //print("Ik ben bij het eindpunt");
+
+                }
+                else
+                {
+                    gameObject.GetComponent<Path>()._currentWaypointIndex++;
+                }            
+            }
+            else
             {
                 transform.LookAt(heightOffsetPosition);
                 transform.Translate(Vector3.forward * _speed * Time.deltaTime);
             }
         }
+
+
+
+
+
+
+        //Debug lines below
+        //Debug.Log("I return from NextWayPointLocation: " + gameObject.GetComponent<Path>().GetNextWaypoint());
+        //Debug.Log(gameObject.GetComponent<Path>()._currentWaypointIndex);
 
         /// <summary>
         /// BACKUP VERSION
@@ -51,7 +77,7 @@ namespace Opdrachten
         //private void Update()
         //{
 
-        //    Vector3 heightOffsetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        //    Vector3 heightOffsetPosition = new Vector3(_waypoints[_currentWaypointIndex].position.x, transform.position.y, _waypoints[_currentWaypointIndex].position.z);
         //    float distance = Vector3.Distance(transform.position, heightOffsetPosition);
 
         //    if (distance <= _arrivalthreshold)
@@ -62,23 +88,3 @@ namespace Opdrachten
         //}
     }
 }
-
-
-
-    /// <summary>
-    /// Below class is old version
-    /// </summary>
-
-//    public class PathFollower : MonoBehaviour
-//    {
-//        public Transform target;
-//        public float speed = 1.0f;
-
-//        void Update()
-//        {
-//            transform.LookAt(target);
-//            float step = speed * Time.deltaTime;
-//            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-//        }
-//    }
-//}
