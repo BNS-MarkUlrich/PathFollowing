@@ -1,6 +1,7 @@
 ﻿using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Opdrachten
@@ -14,13 +15,32 @@ namespace Opdrachten
     public class Path : MonoBehaviour
     {
 
+        [SerializeField] public Transform[] _waypoints;
+
+        public int _currentWaypointIndex;
+
+        private void Start()
+        {
+            _currentWaypointIndex = 0;
+        }
+
         /// <summary>
         /// Deze functie returned het volgende waypoint waar naartoe kan worden bewogen.
         /// </summary>
         public Waypoint GetNextWaypoint()
         {
-            // dit is nu niet goed, zorg ervoor dat het goede waypoint wordt teruggegeven.
-            return null;
+            
+            if (_currentWaypointIndex == _waypoints.Length - 1)
+            {
+                print("Ik ben bij het eindpunt");
+
+            }
+            else
+            {
+                _currentWaypointIndex++;
+            }
+
+            return _waypoints[_currentWaypointIndex].gameObject.GetComponent<Waypoint>();
         }
     }
 }

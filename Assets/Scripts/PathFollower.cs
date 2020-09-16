@@ -14,37 +14,23 @@ namespace Opdrachten
 
     public class PathFollower : MonoBehaviour
     {
-        [SerializeField] private Transform[] _waypoints;
+        
 
-        [SerializeField] private float _speed;
+        [SerializeField] private float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;
 
-        private int _currentWaypointIndex;
+        Waypoint position;
 
-        private void Start()
-        {
-            _currentWaypointIndex = 0;
-        }
+
+
 
         private void Update()
         {
-            Vector3 heightOffsetPosition = new Vector3(_waypoints[_currentWaypointIndex].position.x,
-                transform.position.y, _waypoints[_currentWaypointIndex].position.z);
+
+            Vector3 heightOffsetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             float distance = Vector3.Distance(transform.position, heightOffsetPosition);
 
             if (distance <= _arrivalthreshold)
-            {
-                if (_currentWaypointIndex == _waypoints.Length - 1)
-                {
-                    print("Ik ben bij het eindpunt");
-                    
-                }
-                else
-                {
-                    _currentWaypointIndex++;
-                }
-            }
-            else
             {
                 transform.LookAt(heightOffsetPosition);
                 transform.Translate(Vector3.forward * _speed * Time.deltaTime);

@@ -10,6 +10,6 @@ namespace Opdrachten
     /// </summary>
     public class Waypoint : MonoBehaviour
     {
-        public Vector3 Position { get { return transform.position; } }
+        public Vector3 WaypointLocation { get { return transform.position; } }
     }
 }

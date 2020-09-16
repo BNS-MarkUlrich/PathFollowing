@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 248834103}
   m_Layer: 0
   m_Name: Waypoint
-  m_TagString: Untagged
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 351270956}
   m_Layer: 0
   m_Name: Waypoint4
-  m_TagString: Untagged
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,11 +488,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903877189}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0846fa48f37e16246bb148b13d66f607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waypoints:
+  - {fileID: 248834104}
+  - {fileID: 1794973398}
+  - {fileID: 1995889195}
+  _currentWaypointIndex: 0
 --- !u!114 &903877195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,11 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d402594030f7b6f4590441ac1f3f8313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypoints:
-  - {fileID: 248834104}
-  - {fileID: 1794973398}
-  - {fileID: 1995889195}
-  - {fileID: 351270956}
+  _waypoints: []
   _speed: 6
   _arrivalthreshold: 0.1
 --- !u!1 &963194225
@@ -668,7 +669,7 @@ GameObject:
   - component: {fileID: 1794973397}
   m_Layer: 0
   m_Name: Waypoint2
-  m_TagString: Untagged
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -711,7 +712,7 @@ GameObject:
   - component: {fileID: 1995889194}
   m_Layer: 0
   m_Name: Waypoint3
-  m_TagString: Untagged
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
