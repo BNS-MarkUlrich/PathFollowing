@@ -21,6 +21,7 @@ namespace Opdrachten
 
         private void Start()
         {
+            Debug.Log("I return from GetNextWaypoint: " + _waypoints[_currentWaypointIndex].gameObject.GetComponent<Waypoint>());
             _currentWaypointIndex = 0;
         }
 

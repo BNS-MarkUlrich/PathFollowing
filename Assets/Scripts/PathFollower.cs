@@ -19,11 +19,19 @@ namespace Opdrachten
         [SerializeField] private float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;
 
-        Waypoint position;
+        public void Start()
+        {
+            Debug.Log("I return from NextWayPointLocation: " + gameObject.GetComponent<Path>().GetNextWaypoint());
+        }
 
+        public Waypoint NextWayPointLocation()
+        {
+            return gameObject.GetComponent<Path>().GetNextWaypoint();
+        }
 
-
-
+        /// <summary>
+        /// TEST VERSION
+        /// </summary>
         private void Update()
         {
 
@@ -36,6 +44,22 @@ namespace Opdrachten
                 transform.Translate(Vector3.forward * _speed * Time.deltaTime);
             }
         }
+
+        /// <summary>
+        /// BACKUP VERSION
+        /// </summary>
+        //private void Update()
+        //{
+
+        //    Vector3 heightOffsetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        //    float distance = Vector3.Distance(transform.position, heightOffsetPosition);
+
+        //    if (distance <= _arrivalthreshold)
+        //    {
+        //        transform.LookAt(heightOffsetPosition);
+        //        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        //    }
+        //}
     }
 }
 
