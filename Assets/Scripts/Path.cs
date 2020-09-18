@@ -15,21 +15,16 @@ namespace Opdrachten
     public class Path : MonoBehaviour
     {
 
-        [SerializeField] public Transform[] _waypoints; // Mark: maybe try Vector3[]
+        [SerializeField] public Waypoint[] _waypoints;
 
         public int _currentWaypointIndex;
 
         /// <summary>
         /// Deze functie returned het volgende waypoint waar naartoe kan worden bewogen.
         /// </summary>
-        public Waypoint GetNextWaypoint() //TEST = Vector3
+        public Waypoint GetNextWaypoint()
         {
-            //if (_currentWaypointIndex == _waypoints.Length - 1)
-            //{
-            //    print("Ik ben bij het eindpunt");
-
-            //}
-            return _waypoints[_currentWaypointIndex].gameObject.GetComponent<Waypoint>(); //removed .WaypointLocation
+            return _waypoints[_currentWaypointIndex].gameObject.GetComponent<Waypoint>();
         }
     }
 }
