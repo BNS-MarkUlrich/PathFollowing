@@ -34,7 +34,7 @@ namespace Opdrachten
             {
                 if (gameObject.GetComponent<Path>()._currentWaypointIndex == gameObject.GetComponent<Path>()._waypoints.Length-1)
                 {
-                    print(message: "Ik ben bij het eindpunt");
+                    //print(message: "Ik ben bij het eindpunt"); // Mark: Removed For Assignment
 
                 }
                 else
