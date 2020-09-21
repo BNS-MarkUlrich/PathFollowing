@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Opdrachten
 {
@@ -13,7 +14,8 @@ namespace Opdrachten
 
     public class PathFollower : MonoBehaviour
     {
-        
+
+        [SerializeField] private UnityEvent onPathComplete;
 
         [SerializeField] private float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;
@@ -35,6 +37,7 @@ namespace Opdrachten
                 if (gameObject.GetComponent<Path>()._currentWaypointIndex == gameObject.GetComponent<Path>()._waypoints.Length-1)
                 {
                     //print(message: "Ik ben bij het eindpunt"); // Mark: Removed For Assignment
+                    onPathComplete?.Invoke();
 
                 }
                 else
