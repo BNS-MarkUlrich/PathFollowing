@@ -16,6 +16,7 @@ namespace Opdrachten
     {
 
         [SerializeField] private UnityEvent onPathComplete;
+        
 
         [SerializeField] private float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;
@@ -26,11 +27,14 @@ namespace Opdrachten
             gameObject.GetComponent<Path>()._currentWaypointIndex = 0;
         }
 
+        public Vector3 EnemyPosition { get { return transform.position; } }
+
         private void Update()
         {
             Vector3 heightOffsetPosition = new Vector3(gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.x, 
                 transform.position.y, gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.z);
             float distance = Vector3.Distance(transform.position, heightOffsetPosition);
+
 
             if (distance <= _arrivalthreshold)
             {
