@@ -21,33 +21,38 @@ namespace Opdrachten
         [SerializeField] private float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;
 
+        private Path getPath;
 
-        private void Start()
+        private Waypoint currentWaypoint;
+
+        private void Awake()
         {            
-            gameObject.GetComponent<Path>()._currentWaypointIndex = 0;
+            getPath = GameObject.FindObjectOfType<Path>();
+            //getPath._currentWaypointIndex = 0;
+            currentWaypoint = getPath.GetNextWaypoint(currentWaypoint);
+            Debug.Log(currentWaypoint);
         }
 
         public Vector3 EnemyPosition { get { return transform.position; } }
 
         private void Update()
         {
-            Vector3 heightOffsetPosition = new Vector3(gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.x, 
-                transform.position.y, gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.z);
+            // OLD Begin
+            //Vector3 heightOffsetPosition = new Vector3(gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.x, 
+            //    transform.position.y, gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.z);
+            // OLD End
+            Vector3 heightOffsetPosition = new Vector3(currentWaypoint.WaypointLocation.x, transform.position.y, currentWaypoint.WaypointLocation.z);
             float distance = Vector3.Distance(transform.position, heightOffsetPosition);
 
 
             if (distance <= _arrivalthreshold)
             {
-                if (gameObject.GetComponent<Path>()._currentWaypointIndex == gameObject.GetComponent<Path>()._waypoints.Length-1)
+                Debug.Log("Hier is distance:");
+                currentWaypoint = getPath.GetNextWaypoint(currentWaypoint);
+                if (currentWaypoint == null)
                 {
-                    //print(message: "Ik ben bij het eindpunt"); // Mark: Removed For Assignment
                     onPathComplete?.Invoke();
-
                 }
-                else
-                {
-                    gameObject.GetComponent<Path>()._currentWaypointIndex++;
-                }            
             }
             else
             {

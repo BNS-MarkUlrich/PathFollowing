@@ -15,16 +15,41 @@ namespace Opdrachten
     public class Path : MonoBehaviour
     {
 
-        [SerializeField] public Waypoint[] _waypoints;
+        [SerializeField] private Waypoint[] _waypoints;
 
-        public int _currentWaypointIndex;
+        //public int _currentWaypointIndex;
 
         /// <summary>
-        /// Deze functie returned het volgende waypoint waar naartoe kan worden bewogen.
+        /// Deze functie returned het volgende waypoint waar naartoe kan worden bewogen
         /// </summary>
-        public Waypoint GetNextWaypoint()
+        /// <param name="currentWaypoint">Geef me huidige waypoint referentie.</param>
+        /// <returns>Geeft null terug wanneer laatste waypoint is bereikt, als currentWaypoint null is geeft hij de eerste in de lijst terug.</returns>
+        public Waypoint GetNextWaypoint(Waypoint currentWaypoint)
         {
-            return _waypoints[_currentWaypointIndex].gameObject.GetComponent<Waypoint>();
+            if(currentWaypoint == null)
+            {
+                Debug.Log("Waypoints[0]");
+                return _waypoints[0];
+            }
+            
+            for(int i = 0; i < _waypoints.Length; i++)
+            {
+                if(i == _waypoints.Length - 1)
+                {
+                    Debug.Log("Waypoints null");
+                    return null;
+                }
+                else if (currentWaypoint == _waypoints[i])
+                {
+                    Debug.Log("Waypoints i++");
+                    return _waypoints[++i];
+                }
+            }
+
+            // TODO: If valid reference but not in array == append to array
+
+            return null;
+            //return _waypoints[].gameObject.GetComponent<Waypoint>();
         }
     }
 }
