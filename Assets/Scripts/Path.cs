@@ -17,7 +17,24 @@ namespace Opdrachten
 
         [SerializeField] private Waypoint[] _waypoints;
 
-        //public int _currentWaypointIndex;
+        public GameObject lineGO;
+        //public int _currentWaypointIndex; // OLD
+
+        public void Update()
+        {
+            for (int i = 1; i < _waypoints.Length; i++)
+            {
+                GameObject line = Instantiate(lineGO);
+
+                line.transform.SetParent(transform);
+
+                LineRenderer lr = line.GetComponent<LineRenderer>();
+                lr.SetPosition(0, _waypoints[i - 1].transform.position);
+                lr.SetPosition(1, _waypoints[i].transform.position);
+
+                //Debug.DrawLine(_waypoints[i - 1].transform.position, _waypoints[i].transform.position);
+            }
+        }
 
         /// <summary>
         /// Deze functie returned het volgende waypoint waar naartoe kan worden bewogen
@@ -26,9 +43,10 @@ namespace Opdrachten
         /// <returns>Geeft null terug wanneer laatste waypoint is bereikt, als currentWaypoint null is geeft hij de eerste in de lijst terug.</returns>
         public Waypoint GetNextWaypoint(Waypoint currentWaypoint)
         {
-            if(currentWaypoint == null)
+            
+            if (currentWaypoint == null)
             {
-                Debug.Log("Waypoints[0]");
+                //Debug.Log("Waypoints[0]");
                 return _waypoints[0];
             }
             
@@ -36,20 +54,20 @@ namespace Opdrachten
             {
                 if(i == _waypoints.Length - 1)
                 {
-                    Debug.Log("Waypoints null");
+                    //Debug.Log("Waypoints null");
                     return null;
                 }
                 else if (currentWaypoint == _waypoints[i])
-                {
-                    Debug.Log("Waypoints i++");
+                {                   
+                    //Debug.Log("Waypoints i++");
                     return _waypoints[++i];
-                }
+                }                
             }
 
             // TODO: If valid reference but not in array == append to array
 
             return null;
-            //return _waypoints[].gameObject.GetComponent<Waypoint>();
+            //return _waypoints[].gameObject.GetComponent<Waypoint>(); // OLD
         }
     }
 }

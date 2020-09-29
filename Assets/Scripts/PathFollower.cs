@@ -30,7 +30,7 @@ namespace Opdrachten
             getPath = GameObject.FindObjectOfType<Path>();
             //getPath._currentWaypointIndex = 0;
             currentWaypoint = getPath.GetNextWaypoint(currentWaypoint);
-            Debug.Log(currentWaypoint);
+            //Debug.Log(currentWaypoint);
         }
 
         public Vector3 EnemyPosition { get { return transform.position; } }
@@ -47,7 +47,7 @@ namespace Opdrachten
 
             if (distance <= _arrivalthreshold)
             {
-                Debug.Log("Hier is distance:");
+                //Debug.Log("Hier is distance:");
                 currentWaypoint = getPath.GetNextWaypoint(currentWaypoint);
                 if (currentWaypoint == null)
                 {
