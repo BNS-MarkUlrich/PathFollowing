@@ -15,8 +15,8 @@ namespace Opdrachten
     public class PathFollower : MonoBehaviour
     {
 
-        [SerializeField] private UnityEvent onPathComplete;
-        
+        [SerializeField] public UnityEvent onPathComplete;
+
 
         [SerializeField] private float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;

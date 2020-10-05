@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     public void EnemyTakeDamage(float Edmg)
     {
         _currentEnemyHealth -= Edmg;
+        //Debug.Log(_currentEnemyHealth);
         print("Target hit");
 
         if (_currentEnemyHealth <= 0)
