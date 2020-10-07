@@ -61,7 +61,7 @@ namespace Opdrachten
                 {                   
                     //Debug.Log("Waypoints i++");
                     return _waypoints[++i];
-                }                
+                }
             }
 
             // TODO: If valid reference but not in array == append to array

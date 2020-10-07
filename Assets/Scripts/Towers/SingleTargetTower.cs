@@ -20,35 +20,35 @@ namespace Opdrachten
             //onAttacked.Invoke();
             if (CanAttack())
             {
-                //Debug.Log(CanAttack() + "While");
-                //_isShooting = true;
+                // MARK: Add transform.LookAt() function
+                // Smth like:
+                // if target != null
+                //  - transform.LookAt() function
+                // else
+                // - reset rotation
+
+                //_enemyHealth = GameObject.FindWithTag("Enemy").GetComponent<EnemyHealth>();
+
                 if (_isShooting != true)
                 {
                     StartCoroutine(ShootTimer());
                     _enemyHealth.EnemyTakeDamage(_damageAmount);
+                    Debug.Log(_enemyHealth);
                 }
             }
-            //for (int i = 0; i < _enemiesHealth.Length-1; i++)
-            //{
-            //    if (CanAttack())
-            //    {
-            //        StartCoroutine(ShootTimer());
-            //    }
-            //}
             //Debug.Log("SingleTargetTower: Ik heb 1 target en val deze aan!");
         }
 
         IEnumerator ShootTimer()
         {
             _isShooting = true;
+            yield return !CanAttack();
+            //Debug.Log(CanAttack() + "ShootTmer");
             while (_isShooting == true)
             {
                 yield return new WaitForSeconds(1f);
                 _isShooting = false;
             }
-            //_enemyHealth.EnemyTakeDamage(_damageAmount);
-            yield return !CanAttack();
-            Debug.Log(CanAttack() + "ShootTmer");
             Attack();
         }
     }
