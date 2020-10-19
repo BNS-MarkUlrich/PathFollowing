@@ -11,7 +11,6 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         _currentEnemyHealth = _startEnemyHealth;
-        //_enemiesHealth = GameObject.FindObjectsOfType<EnemyHealth>();
     }
 
     public void EnemyTakeDamage(float Edmg)

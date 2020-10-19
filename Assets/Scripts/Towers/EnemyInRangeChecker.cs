@@ -9,13 +9,22 @@ namespace Opdrachten
     {
         [SerializeField] private float _radius;
         [SerializeField] private LayerMask _layer;
+
         public Enemy GetFirstEnemyInRange()
         {
             Collider[] cols = Physics.OverlapSphere(transform.position, _radius, _layer);
             if (cols.Length < 1)
                 return null;
 
-            return cols[0].GetComponent<Enemy>();
+            else if (cols.Length >= 2)
+            {
+                return cols[+1].GetComponent<Enemy>();
+            }
+            else
+            {
+                return cols[0].GetComponent<Enemy>();
+            }
+            
         }
 
         public Enemy[] GetAllEnemiesInRange()

@@ -162,10 +162,12 @@ GameObject:
   - component: {fileID: 4802758499700265770}
   - component: {fileID: 4802758499700265781}
   - component: {fileID: 4802758499700265780}
-  - component: {fileID: 4802758499700265782}
+  - component: {fileID: 3261226487492462548}
+  - component: {fileID: 71941663101407759}
+  - component: {fileID: 8108495601598406674}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +250,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4802758499700265782
+--- !u!114 &3261226487492462548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,19 +265,6 @@ MonoBehaviour:
   onPathComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7456360081813206174, guid: 7a9009e5ca8745548a72ba8445588ab2,
-          type: 3}
-        m_TargetAssemblyTypeName: PlayerBaseHealth, Assembly-CSharp
-        m_MethodName: TakeDamage
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4802758499700265777}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -288,8 +277,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _speed: 13
+  _speed: 6
   _arrivalthreshold: 0.1
+--- !u!114 &71941663101407759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802758499700265777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b563d7d5c928c0245954f5a2161fceb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageAmount: 3
+--- !u!114 &8108495601598406674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802758499700265777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07bc1c0b2c603f44b92d0a1086745cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startEnemyHealth: 3
 --- !u!1 &5415020891704711875
 GameObject:
   m_ObjectHideFlags: 0

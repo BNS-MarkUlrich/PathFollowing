@@ -27,13 +27,12 @@ namespace Opdrachten
                 // else
                 // - reset rotation
 
-                //_enemyHealth = GameObject.FindWithTag("Enemy").GetComponent<EnemyHealth>();
-
                 if (_isShooting != true)
                 {
                     StartCoroutine(ShootTimer());
-                    _enemyHealth.EnemyTakeDamage(_damageAmount);
-                    Debug.Log(_enemyHealth);
+                    //_target = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
+                    _target.EnemyTakeDamage(_damageAmount);
+                    Debug.Log(_target);
                 }
             }
             //Debug.Log("SingleTargetTower: Ik heb 1 target en val deze aan!");
@@ -42,7 +41,6 @@ namespace Opdrachten
         IEnumerator ShootTimer()
         {
             _isShooting = true;
-            yield return !CanAttack();
             //Debug.Log(CanAttack() + "ShootTmer");
             while (_isShooting == true)
             {
