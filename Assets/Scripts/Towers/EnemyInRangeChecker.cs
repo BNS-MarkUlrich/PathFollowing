@@ -16,9 +16,13 @@ namespace Opdrachten
             if (cols.Length < 1)
                 return null;
 
+            //else if (cols.Length >= 3)
+            //{
+            //    return cols[+1].GetComponent<Enemy>();
+            //}
             else if (cols.Length >= 2)
             {
-                return cols[+1].GetComponent<Enemy>();
+                return cols[0].GetComponent<Enemy>();
             }
             else
             {

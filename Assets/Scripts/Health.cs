@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float _startHealth = 3;
+    [SerializeField] public float _startHealth = 3;
 
-    private float _currentHealth;
+    public float _currentHealth;
     private new MeshRenderer renderer;
 
     private void Start()

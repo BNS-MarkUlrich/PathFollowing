@@ -41,7 +41,7 @@ namespace Opdrachten
             //Vector3 heightOffsetPosition = new Vector3(gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.x, 
             //    transform.position.y, gameObject.GetComponent<Path>().GetNextWaypoint().WaypointLocation.z);
             // OLD End
-            Vector3 heightOffsetPosition = new Vector3(currentWaypoint.WaypointLocation.x, transform.position.y, currentWaypoint.WaypointLocation.z);
+            Vector3 heightOffsetPosition = new Vector3(currentWaypoint.WaypointLocation.x, currentWaypoint.WaypointLocation.y, currentWaypoint.WaypointLocation.z); // was transform.position.y
             float distance = Vector3.Distance(transform.position, heightOffsetPosition);
 
 

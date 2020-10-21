@@ -17,8 +17,8 @@ namespace Opdrachten
         [SerializeField] protected float _damageAmount;
 
 
-        private float duration = 4.0f;
-        private float timer = 0.0f;
+        //private float duration = 4.0f;
+        //private float timer = 0.0f;
 
         private void Awake()
         {
