@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Opdrachten
 {
-    public class SingleTargetTower : Tower // Rename to "(Heavy) Cannon"
+    public class SingleTargetTower : Tower
     {
         private Enemy _target;
 
@@ -17,16 +17,14 @@ namespace Opdrachten
         
         protected override void Attack()
         {
-            //onAttacked.Invoke();
-            if (CanAttack())
+            if (CanAttack()) // Check if we can attack
             {
-                StartCoroutine(LookAtTarget());
+                StartCoroutine(LookAtTarget()); // Look at enemy
 
                 if (_isShooting != true)
                 {
-                    StartCoroutine(ShootTimer());
-                    _target.EnemyTakeDamage(_damageAmount);
-                    //Debug.Log(_target);
+                    StartCoroutine(ShootTimer()); // attack in intervals
+                    _target.EnemyTakeDamage(_damageAmount); // damage enemy
                 }
             }
         }
@@ -34,8 +32,6 @@ namespace Opdrachten
         IEnumerator ShootTimer()
         {
             _isShooting = true;
-            //Debug.Log(CanAttack() + "ShootTmer");
-            //_targetPosition = _target.transform;
             while (_isShooting == true)
             {
                 yield return new WaitForSeconds(1f);

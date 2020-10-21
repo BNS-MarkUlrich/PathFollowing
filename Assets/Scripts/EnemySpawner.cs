@@ -11,11 +11,10 @@ public class EnemySpawner : MonoBehaviour
     public float spawnDelay;
     public Health player;
     public float deadPlayer;
-    //public Enemy enemies;
 
     private void Start()
     {
-        InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        InvokeRepeating("SpawnObject", spawnTime, spawnDelay); // Spawn enemies by interval
     }
 
     private void Update()
@@ -26,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnObject()
     {
         Instantiate(spawnee, transform.position, transform.rotation);
-        if(deadPlayer == 0)
+        if(deadPlayer == 0) // WIP feature, not related to the assignment
         {
             stopSpawning = true;
         }

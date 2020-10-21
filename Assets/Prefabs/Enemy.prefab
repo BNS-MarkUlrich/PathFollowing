@@ -533,7 +533,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _speed: 4
+  _speed: 8
   _arrivalthreshold: 0.1
 --- !u!114 &5948684783240076465
 MonoBehaviour:
@@ -550,7 +550,6 @@ MonoBehaviour:
   _damageAmount: 1
   _startEnemyHealth: 8
   _currentEnemyHealth: 0
-  counter: 0
 --- !u!1 &7659635246317506802
 GameObject:
   m_ObjectHideFlags: 0

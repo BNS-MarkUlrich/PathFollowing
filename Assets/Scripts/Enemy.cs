@@ -12,26 +12,15 @@ namespace Opdrachten
         [SerializeField] private float _damageAmount;
         [SerializeField] public float _startEnemyHealth = 2;
         public float _currentEnemyHealth;
-        //private Health _takeDamageFeedback;
         private new MeshRenderer renderer;
-        public int counter;
+        private Health playerHealth;
 
         private PathFollower _pathFollower;
-        //private EnemySpawner deadPlayer;
-        //private bool playerIsDead;
 
         private void Awake()
         {
             _pathFollower = GetComponent<PathFollower>();
-            //playerIsDead = deadPlayer.stopSpawning;
-            //_takeDamageFeedback = Health.TakeDamageFeedback();
             renderer = GetComponent<MeshRenderer>();
-        }
-
-        private void KillCounter(int score)
-        {
-            counter += score;
-            Debug.Log(counter);
         }
 
         void Start()
@@ -39,31 +28,30 @@ namespace Opdrachten
             SetupEnemy();
         }
 
+        private void LateUpdate()
+        {
+            if (playerHealth._currentHealth <= 0)
+            {
+                //gameObject.SetActive(false);
+                Destroy(gameObject);
+            }
+        }
+
         public void SetupEnemy()
         {
             _currentEnemyHealth = _startEnemyHealth;
-            Health playerHealth = GameObject.FindWithTag("PlayerBase").GetComponent<Health>();
+            playerHealth = GameObject.FindWithTag("PlayerBase").GetComponent<Health>();
             _pathFollower.onPathComplete.AddListener(() => playerHealth.TakeDamage(_damageAmount));
-            if (playerHealth._currentHealth <= 0)
-            {
-                //playerIsDead = true;
-                gameObject.SetActive(false);
-            }
         }
         public void EnemyTakeDamage(float Edmg)
         {
             _currentEnemyHealth -= Edmg;
-            //Debug.Log(_currentEnemyHealth);
             StartCoroutine(TakeDamageFeedback());
-            //print("Target hit");
 
             if (_currentEnemyHealth <= 0)
             {
-                KillCounter(1);
-                gameObject.SetActive(false);
-
-                //print("Hostile down!");
-                //return null;
+                //gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
         IEnumerator TakeDamageFeedback()
