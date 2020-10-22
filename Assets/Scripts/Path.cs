@@ -20,7 +20,7 @@ namespace Opdrachten
         public GameObject lineGO;
         //public int _currentWaypointIndex; // OLD
 
-        public void Update()
+        public void Awake()
         {
             for (int i = 1; i < _waypoints.Length; i++)
             {
@@ -61,7 +61,7 @@ namespace Opdrachten
                 {                   
                     //Debug.Log("Waypoints i++");
                     return _waypoints[++i];
-                }                
+                }
             }
 
             // TODO: If valid reference but not in array == append to array
