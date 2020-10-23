@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Opdrachten
 {
@@ -11,7 +12,12 @@ namespace Opdrachten
     {
         [SerializeField] private float _damageAmount;
         [SerializeField] public float _startEnemyHealth = 2;
-        public float _currentEnemyHealth;
+
+        public EnemyHealthDisplay healthbarValue;
+        private EnemyHealthDisplay updateHealthbar;
+
+        private float _currentEnemyHealth;
+
         private new MeshRenderer renderer;
         private Health playerHealth;
 
@@ -30,6 +36,8 @@ namespace Opdrachten
 
         private void LateUpdate()
         {
+            updateHealthbar.UpdateHP(_currentEnemyHealth);
+
             if (playerHealth._currentHealth <= 0)
             {
                 //gameObject.SetActive(false);
@@ -40,9 +48,12 @@ namespace Opdrachten
         public void SetupEnemy()
         {
             _currentEnemyHealth = _startEnemyHealth;
+            updateHealthbar = healthbarValue.GetComponentInChildren<EnemyHealthDisplay>();
+            updateHealthbar.Initialise(_startEnemyHealth, _currentEnemyHealth);
             playerHealth = GameObject.FindWithTag("PlayerBase").GetComponent<Health>();
             _pathFollower.onPathComplete.AddListener(() => playerHealth.TakeDamage(_damageAmount));
         }
+
         public void EnemyTakeDamage(float Edmg)
         {
             _currentEnemyHealth -= Edmg;
