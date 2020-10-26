@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4566890619330397137}
   - component: {fileID: 5204857171646055209}
   - component: {fileID: 6851227798924373338}
-  - component: {fileID: 2185297350283817710}
+  - component: {fileID: 1042577503381461657}
   m_Layer: 0
   m_Name: enemyHealthString
   m_TagString: Untagged
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &2185297350283817710
+--- !u!114 &1042577503381461657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageAmount: 1
   _startEnemyHealth: 8
-  _currentEnemyHealth: 0
+  healthbarValue: {fileID: 1042577503381461657}
 --- !u!1 &7659635246317506802
 GameObject:
   m_ObjectHideFlags: 0
