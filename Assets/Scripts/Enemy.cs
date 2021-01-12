@@ -22,11 +22,13 @@ namespace Opdrachten
         private Health playerHealth;
 
         private PathFollower _pathFollower;
+        public float _enemySpeed;
 
         private void Awake()
         {
             _pathFollower = GetComponent<PathFollower>();
             renderer = GetComponent<MeshRenderer>();
+            _enemySpeed = gameObject.GetComponent<PathFollower>()._speed;
         }
 
         void Start()

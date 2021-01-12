@@ -18,7 +18,7 @@ namespace Opdrachten
         [SerializeField] public UnityEvent onPathComplete;
 
 
-        [SerializeField] private float _speed = 3.0f;
+        [SerializeField] public float _speed = 3.0f;
         [SerializeField] private float _arrivalthreshold = 0.1f;
 
         private Path getPath;

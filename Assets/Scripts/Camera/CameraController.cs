@@ -15,17 +15,17 @@ public class CameraController : MonoBehaviour
     [Header("Specatator")]
     public float spectatorMoveSpeed;
 
-    private float rotX;
-    private float rotY;
+    public float rotX;
+    public float rotY;
 
     private bool isSpecatator;
 
-    private void Start()
+    private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         // get the mouse movement inputs
         rotX += Input.GetAxis("Mouse X") * sensX;
